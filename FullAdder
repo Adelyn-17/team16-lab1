@@ -1,0 +1,13 @@
+module FullAdder
+(
+input wire key_a,
+input wire key_b,
+input wire key_cin,
+output wire led_sum,
+output wire led_cout
+);
+
+assign led_sum = key_a ^ key_b ^ key_cin;
+assign led_cout = (key_a & key_b) | (key_a & key_cin) | (key_b & key_cin);
+
+endmodule
