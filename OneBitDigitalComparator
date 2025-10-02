@@ -1,0 +1,29 @@
+`timescale 1ns/1ns
+
+module tb_OneBitDigitalComparator();
+
+reg key_A;
+reg key_B;
+
+wire led_A_less_B;
+wire led_A_equal_B;
+wire led_A_greater_B;
+
+OneBitDigitalComparator uut (
+        .key_A(key_A),
+        .key_B(key_B),
+        .led_A_less_B(led_A_less_B),
+        .led_A_equal_B(led_A_equal_B),
+        .led_A_greater_B(led_A_greater_B)
+		  );
+    
+initial begin
+key_A<=1'b0;
+key_B<=1'b0;
+#1000 $finish;
+end
+
+always#10 key_A<={$random}%2;
+always#10 key_B<={$random}%2;
+
+endmodule
