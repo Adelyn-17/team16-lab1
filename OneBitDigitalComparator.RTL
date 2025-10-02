@@ -1,0 +1,14 @@
+module OneBitDigitalComparator
+(
+   input wire key_A,
+   input wire key_B,
+   output wire led_A_less_B,
+   output wire led_A_equal_B,
+   output wire led_A_greater_B
+);
+
+assign led_A_less_B = (~key_A)&key_B;
+assign led_A_equal_B = ~(key_A^key_B);
+assign led_A_greater_B = key_A&(~key_B);
+
+endmodule
