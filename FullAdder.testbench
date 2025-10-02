@@ -1,0 +1,32 @@
+`timescale 1ns/1ns
+
+module tb_FullAdder();
+
+wire led_sum;
+wire led_cout;
+
+reg key_a;
+reg key_b;
+reg key_cin;
+
+initial begin
+key_a <= 1'b0;
+key_b <= 1'b0;
+key_cin <= 1'b0;
+#1000 $finish;
+end
+
+always #10 key_a <= {$random} % 2;
+always #10 key_b <= {$random} % 2;
+always #10 key_cin <= {$random} % 2;
+
+FullAdder FullAdder_inst
+(
+.key_a(key_a),
+.key_b(key_b),
+.key_cin(key_cin),
+.led_sum(led_sum),
+.led_cout(led_cout)
+);
+
+endmodule
